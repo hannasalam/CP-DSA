@@ -29,7 +29,7 @@ int Solution::solve(vector<int> & A, int b) {
 int Solution::solve(vector<int> & cardPoints, int k) {
     int len=cardPoints.size()+1;
         vector<int>prefixsum(len,0);
-        //Build the prefix sum array
+        //Build the prefix sum array_
         for(int i=1;i<len;i++) prefixsum[i]=prefixsum[i-1]+cardPoints[i-1];
         
     int max_sum=INT_MIN;
