@@ -6,10 +6,10 @@ public:
         {
             max= max>i?max:i;
         }
-        cout<<"ans "<<max<<endl;
-        int ans;
-        cout<<min<<"\t"<<max<<"\t";
-        while(min<max)
+        // cout<<"ans "<<max<<endl;
+        int ans=max;
+        // cout<<min<<"\t"<<max<<"\t";
+        while(min<=max)
         {
             int mid = (max+min)/2;
             int hours = 0;
@@ -18,19 +18,19 @@ public:
             {
                 hours += x/ mid + (x % mid != 0);
             }
-            cout<<mid<<"\t"<<hours<<"\n";
-            if(hours>h)
+            // cout<<mid<<"\t"<<hours<<"\n";
+            if(hours<=h)
             {
-                min = mid+1;
+                max = mid-1;
+                ans = ans<mid?ans:mid;
                 
             }
             else
             {
-                max = mid;
-                
+                min = mid+1;                
             }
         }
-        return max;
+        return ans;
         
     }
 };
