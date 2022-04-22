@@ -1,0 +1,52 @@
+class MyHashMap {
+public:
+    vector<int> keyA;
+    vector<int> valueA;
+    MyHashMap() {
+        
+    }
+    
+    void put(int key, int value) {
+        
+        vector<int>::iterator it;
+        it = find(keyA.begin(),keyA.end(),key);
+        if(it==keyA.end())
+        {
+            keyA.push_back(key);
+            valueA.push_back(value);
+        }
+        else
+        {
+            valueA[it-keyA.begin()] = value;
+        }
+    }
+    
+    int get(int key) {
+        vector<int>::iterator it;
+        it = find(keyA.begin(),keyA.end(),key);
+        if(it==keyA.end())
+        {
+            return -1;
+        }
+        else
+        {
+            return valueA[it-keyA.begin()];
+        }
+        
+    }
+    
+    void remove(int key) {
+        vector<int>::iterator it;
+        it = find(keyA.begin(),keyA.end(),key);
+        if(it!=keyA.end())
+        {
+            int x = it-keyA.begin();
+            keyA.erase(it);
+            valueA.erase(valueA.begin()+x);
+        }
+        
+    }
+};
+
+
+// Another way is to declare a vector of very large size and do all these operations in O(n)
