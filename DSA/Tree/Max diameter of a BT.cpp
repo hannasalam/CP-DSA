@@ -1,3 +1,4 @@
+Brute force:
 class Solution {
     int maxi = INT_MIN;
 private:
@@ -19,6 +20,26 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
             if(root==NULL) return 0;
             traversal(root);
+        return maxi;
+    }
+};
+
+Optimized:
+lass Solution {
+    int maxi = INT_MIN;
+private:
+    int diameter(TreeNode* root)
+    {
+        if(root==NULL) return 0;
+        int l = diameter(root->left);
+        int r = diameter(root->right);
+        maxi = max(maxi,l+r);
+        return 1+max(l,r);
+    }
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+            if(root==NULL) return 0;
+            int i = diameter(root);
         return maxi;
     }
 };
