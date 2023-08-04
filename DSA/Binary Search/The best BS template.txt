@@ -5,7 +5,7 @@ function binarySearch(arr) {
   // decide what is the search space
   // hi should be able to take all possible values in the search space
   // lo points to an invalid value (the negative case of the if condition)
-  let lo = -1, hi = arr.length;
+  let lo = -1, hi = arr.length-1;
   while (lo + 1 < hi) {
     let mid = lo + Math.floor((hi - lo) / 2);
     if (condition(arr, mid)) {
@@ -24,7 +24,7 @@ function binarySearch(arr) {
   // decide what is the search space
   // lo should be able to take all possible values in that search space
   // hi points to an invalid value (the negative case of the if condition)
-  let lo = -1, hi = arr.length;
+  let lo = 0, hi = arr.length;
   while (lo + 1 < hi) {
     let mid = lo + Math.floor((hi - lo) / 2);
     if (condition(arr, mid)) {
