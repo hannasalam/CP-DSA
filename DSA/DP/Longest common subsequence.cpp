@@ -45,3 +45,22 @@ public:
 
         return prev[0];
     }
+
+//printing
+        string s = "";
+		int i=0, j =0;
+		while(i<n and j<m){
+			if(t1[i]==t2[j]){
+				s+= t1[i];
+				i++;
+				j++;
+			}
+			else{
+				if(dp[i+1][j]>dp[i][j+1]){
+					i++;
+				}
+				else{
+					j++;
+				}
+			}
+		}
