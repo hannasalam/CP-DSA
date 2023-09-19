@@ -1,21 +1,20 @@
 class Solution {
 public:
     int timer = 0;
-    void dfs(int i,int parent, vector<vector<int>>& adj, vector<int>& vis, vector<int>& time, vector<int>& low, vector<vector<int>>& ans){
-        vis[i] = 1;
-        low[i] = time[i] = timer;
-        timer++;
-        for(auto e:adj[i]){
-            if(e==parent) continue;
-            if(vis[e]==0){
-                dfs(e,i,adj,vis,time,low,ans);
-                low[i] = min(low[i],low[e]);
-                if(time[i]<low[e]){
-                    ans.push_back({i,e});
-                }
-            }else{
-                low[i] = min(low[e],low[i]);
+    void dfs(vector<vector<int>>& adj, int i, int p,vector<int>& dis, vector<int>& low,vector<vector<int>>& ans,vector<int>& vis){
+        vis[i] = true;
+        dis[i] = time;
+        low[i] = time;
+        time++;
+        for(auto j:adj[i]){
+            if(j==p or j==i) continue;
+            if(vis[j]==0){
+                dfs(adj,j,i,dis,low,ans,vis);
             }
+            if(j!=i){
+                low[i] = min(low[i],low[j]);
+            }
+            if(dis[i]<low[j]) ans.push_back({i,j});
         }
     }
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
